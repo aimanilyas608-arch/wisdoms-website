@@ -1,13 +1,14 @@
 import Image from 'next/image'
 import { Button } from '@/components/ui/Button'
 import { cn } from '@/lib/cn'
+import { BackgroundDecor } from '@/components/ui/BackgroundDecor'
 
 type HeroProps = {
   eyebrow?: string
   heading: string
   subheading?: string
   backgroundImage?: any
-  overlay?: 'none' | 'light' | 'dark' | 'gradient-purple'
+  overlay?: 'none' | 'light' | 'dark' | 'gradient-teal' | 'gradient-purple'
   buttons?: { label: string; href: string; variant?: 'primary' | 'secondary' | 'ghost' }[]
   align?: 'left' | 'center'
   size?: 'compact' | 'medium' | 'large'
@@ -34,16 +35,19 @@ export default function Hero({
     none: '',
     light: 'bg-white/70',
     dark: 'bg-charcoal/60',
-    'gradient-purple': 'bg-gradient-to-br from-purple/95 via-purple/85 to-charcoal/70',
+    'gradient-teal': 'bg-linear-to-br from-purple/95 via-purple/85 to-charcoal/70',
+    'gradient-purple': 'bg-linear-to-br from-purple/95 via-purple/85 to-charcoal/70',
   }[overlay]
 
-  const tone = hasBg && (overlay === 'dark' || overlay === 'gradient-purple')
+  const tone = hasBg && (overlay === 'dark' || overlay === 'gradient-teal' || overlay === 'gradient-purple')
   const alignCls = align === 'center' ? 'text-center items-center mx-auto' : ''
 
   return (
-    <section
-      className={cn('relative isolate overflow-hidden', !hasBg && 'bg-ivory', sizeCls)}
-    >
+    <section className={cn('relative isolate overflow-hidden', !hasBg && 'bg-ivory', sizeCls)}>
+      {/* Animated decorative background — only when there's no photo */}
+      {!hasBg && <BackgroundDecor variant="hero" />}
+
+      {/* Photo background — when provided */}
       {hasBg && (
         <>
           <Image
@@ -57,12 +61,13 @@ export default function Hero({
           <div className={cn('absolute inset-0', overlayCls)} aria-hidden />
         </>
       )}
+
       <div className="relative mx-auto flex max-w-6xl flex-col px-5 md:px-8">
         <div className={cn('flex max-w-3xl flex-col', alignCls)}>
           {eyebrow && (
             <p
               className={cn(
-                'mb-4 text-sm font-semibold uppercase tracking-widest',
+                'mb-4 text-sm font-semibold uppercase tracking-widest animate-fade-in-up',
                 tone ? 'text-gold' : 'text-purple',
               )}
             >
@@ -71,18 +76,20 @@ export default function Hero({
           )}
           <h1
             className={cn(
-              'text-4xl font-bold leading-tight tracking-tight md:text-5xl lg:text-6xl',
+              'text-4xl font-bold leading-tight tracking-tight md:text-5xl lg:text-6xl animate-fade-in-up',
               tone ? 'text-white' : 'text-charcoal',
             )}
+            style={{ animationDelay: '0.1s' }}
           >
             {heading}
           </h1>
           {subheading && (
             <p
               className={cn(
-                'mt-6 text-lg leading-relaxed md:text-xl',
+                'mt-6 text-lg leading-relaxed md:text-xl animate-fade-in-up',
                 tone ? 'text-white/90' : 'text-charcoal/75',
               )}
+              style={{ animationDelay: '0.2s' }}
             >
               {subheading}
             </p>
@@ -90,9 +97,10 @@ export default function Hero({
           {buttons.length > 0 && (
             <div
               className={cn(
-                'mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap',
+                'mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap animate-fade-in-up',
                 align === 'center' && 'justify-center',
               )}
+              style={{ animationDelay: '0.3s' }}
             >
               {buttons.map((b, i) => (
                 <Button

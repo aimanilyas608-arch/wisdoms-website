@@ -27,7 +27,7 @@ export default function FounderNote({
       >
         <div>
           {photo?.url && (
-            <div className="relative aspect-[4/5] overflow-hidden rounded-3xl">
+            <div className="relative aspect-4/5 overflow-hidden rounded-3xl">
               <Image
                 src={photo.url}
                 alt={photo.alt ?? name}

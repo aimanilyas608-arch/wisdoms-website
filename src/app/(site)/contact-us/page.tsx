@@ -2,7 +2,7 @@ import { getPayloadClient } from '@/lib/payload'
 import { DynamicForm } from '@/components/forms/DynamicForm'
 import { Section } from '@/components/ui/Section'
 
-export const revalidate = 60
+export const revalidate = 0
 
 export default async function ContactPage() {
   const payload = await getPayloadClient()

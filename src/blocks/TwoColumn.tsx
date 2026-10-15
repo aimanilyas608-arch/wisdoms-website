@@ -20,7 +20,7 @@ type Props = {
 function Column({ type, richText, image, list }: any) {
   if (type === 'image' && image?.url) {
     return (
-      <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+      <div className="relative aspect-4/3 overflow-hidden rounded-2xl">
         <Image src={image.url} alt={image.alt ?? ''} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
       </div>
     )

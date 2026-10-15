@@ -5,10 +5,15 @@ import { SiteHeader } from '@/components/layout/SiteHeader'
 import { SiteFooter } from '@/components/layout/SiteFooter'
 import { WhatsAppButton } from '@/components/layout/WhatsAppButton'
 
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 const montserrat = Montserrat({
+  // ...
   subsets: ['latin'],
   variable: '--font-montserrat',
   display: 'swap',
+  
 })
 
 export const metadata: Metadata = {

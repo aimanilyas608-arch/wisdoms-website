@@ -1,21 +1,20 @@
 @import "tailwindcss";
 
 @theme {
-  /* Brand primary — purple from logo */
   --color-purple: #5B2C8E;
   --color-purple-dark: #3D1B63;
   --color-purple-light: #F0EAF7;
-
-  /* Accent — gold from logo */
   --color-gold: #D4A83D;
   --color-gold-light: #F5E6C3;
-
-  /* Neutral */
   --color-ivory: #F7F2EA;
   --color-charcoal: #333333;
 
   --font-sans: var(--font-montserrat), system-ui, sans-serif;
+
+  --z-index-100: 100;
+  --z-index-60: 60;
 }
+
 
 html {
   scroll-behavior: smooth;
@@ -24,4 +23,124 @@ html {
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Animated background keyframes ───────────────────────── */
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -40px) scale(1.05);
+  }
+  66% {
+    transform: translate(-20px, 30px) scale(0.98);
+  }
+}
+
+@keyframes float-medium {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-40px, 30px) scale(1.08);
+  }
+}
+
+@keyframes drift {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(20px, -20px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes grid-fade {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Utility classes */
+.animate-float-slow {
+  animation: float-slow 18s ease-in-out infinite;
+}
+.animate-float-medium {
+  animation: float-medium 14s ease-in-out infinite;
+}
+.animate-drift {
+  animation: drift 12s ease-in-out infinite;
+}
+.animate-pulse-soft {
+  animation: pulse-soft 6s ease-in-out infinite;
+}
+.animate-shimmer {
+  background-size: 200% auto;
+  animation: shimmer 6s linear infinite;
+}
+.animate-gradient-shift {
+  background-size: 200% 200%;
+  animation: gradient-shift 12s ease-in-out infinite;
+}
+.animate-grid-fade {
+  animation: grid-fade 8s ease-in-out infinite;
+}
+.animate-fade-in-up {
+  animation: fade-in-up 0.7s ease-out both;
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float-slow,
+  .animate-float-medium,
+  .animate-drift,
+  .animate-pulse-soft,
+  .animate-shimmer,
+  .animate-gradient-shift,
+  .animate-grid-fade {
+    animation: none;
+  }
 }
