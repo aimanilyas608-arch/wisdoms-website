@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand primary — purple from logo */
+  --color-purple: #5B2C8E;
+  --color-purple-dark: #3D1B63;
+  --color-purple-light: #F0EAF7;
+
+  /* Accent — gold from logo */
+  --color-gold: #D4A83D;
+  --color-gold-light: #F5E6C3;
+
+  /* Neutral */
+  --color-ivory: #F7F2EA;
+  --color-charcoal: #333333;
+
+  --font-sans: var(--font-montserrat), system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

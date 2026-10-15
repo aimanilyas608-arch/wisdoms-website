@@ -1,0 +1,7 @@
+﻿allowBuilds:
+  esbuild: true
+  sharp: true
+  unrs-resolver: true
+  '@tailwindcss/oxide': true
+  '@payloadcms/db-postgres': true
+  better-sqlite3: true
